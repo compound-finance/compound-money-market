@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/.."
+
+"$PROJ_ROOT/node_modules/.bin/solium" -d "$PROJ_ROOT/contracts/" -d "$PROJ_ROOT/test"

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -eo pipefail
+
+DIR=`dirname $0`
+PROJ_ROOT=`cd "$DIR/../.." && pwd`
+ORACLE_ROOT="$PROJ_ROOT/../compound-oracle"
+NETWORKS_FOLDER="$PROJ_ROOT/networks"
+
+if [ ! -d "$ORACLE_ROOT" ]; then
+	echo "requires compound price oracle at $ORACLE_ROOT"
+	echo ""
+	echo ""
+	exit 1
+fi
+
+NETWORKS_FOLDER="$NETWORKS_FOLDER" . "$ORACLE_ROOT/scripts/blockchain/deploy" $@

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -eo pipefail
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/../.."
+
+network="$1"
+asset="$2"
+interest_rate_model="$3"
+update_money_market=${4:-no_thanks}
+
+if [ -z "$network" ]; then
+	echo "usage: scripts/blockchain/update-interest-rate {network} {asset} {interest_rate_model} {update_money_market (optional, defaults to no) }"
+	echo ""
+	echo "deploy a new interest rate contract ( if necessary ) and update the Money Market ( if you pass a value for update_money_market ) to use it for an an asset"
+	exit 1
+fi
+
+NETWORK="$network" ASSET="$asset" INTEREST_RATE_MODEL="$interest_rate_model" UPDATE_MONEY_MARKET=$update_money_market truffle exec --network="$network" "$DIR/../javascript/updateInterestRateModel.js"

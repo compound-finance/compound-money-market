@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -eo pipefail
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/../.."
+
+network="$1"
+
+# collateral ratio and liquidation discount may be passed in from command-line, or come from networks configuration
+collateral_ratio="$2"
+liquidation_discount="$3"
+
+if [ -z "$network" ]; then
+	echo "usage: scripts/blockchain/set-risk-parameters {network} <{collateral_ratio}> <{liquidation_discount}>"
+	echo ""
+	echo "calls money market's _setRiskParameters"
+	exit 1
+fi
+
+NETWORK="$network" COLLATERAL_RATIO="$collateral_ratio" LIQUIDATION_DISCOUNT="$liquidation_discount" truffle exec --network="$network" "$DIR/../javascript/setRiskParameters.js"

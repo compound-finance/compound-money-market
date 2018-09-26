@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/.."
+
+SOLIDITY_COVERAGE=true "$PROJ_ROOT/node_modules/.bin/solidity-coverage" $@

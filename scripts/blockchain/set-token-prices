@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -eo pipefail
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/../.."
+
+network="$1"
+
+if [ -z "$network" ]; then
+	echo "usage: scripts/blockchain/set-token-prices {network}"
+	echo ""
+	echo "calls money market's _setAssetPrice for each known token based on networks/{network}.json"
+	exit 1
+fi
+
+NETWORK="$network" truffle exec --network="$network" "$DIR/../javascript/setTokenPrices.js"

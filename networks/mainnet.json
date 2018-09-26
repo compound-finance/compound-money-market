@@ -1,0 +1,43 @@
+{
+    "Contracts": {
+        "Migrations": "0x820d99149c21fcabf2349ce861a5b76aac731837",
+        "MoneyMarket": "0x3fda67f7583380e67ef93072294a7fac882fd7e7",
+        "PriceOracle": "0x1bee451812e0d7013aa152f885c5b6c529e46c72",
+        "StandardInterestRateModel": "0xd25c029a607ee888bdbdbe054515e25ec6f3fff9"
+    },
+    "Tokens": {
+        "ZRX": {
+            "name": "0x Protocol",
+            "symbol": "ZRX",
+            "decimals": 18,
+            "address": "0xE41d2489571d322189246DaFA5ebDe1F4699F498",
+            "supported": true
+        },
+        "BAT": {
+            "name": "Basic Attention Token",
+            "symbol": "BAT",
+            "decimals": 18,
+            "address": "0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
+            "supported": true
+        },
+        "REP": {
+            "name": "Augur",
+            "symbol": "REP",
+            "decimals": 18,
+            "address": "0x1985365e9f78359a9B6AD760e32412f4a445E862",
+            "supported": true
+        },
+        "WETH": {
+            "name": "Wrapped Ether",
+            "symbol": "WETH",
+            "decimals": 18,
+            "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+            "supported": true
+        }
+    },
+    "Blocks": {
+        "Migrations": 6400272,
+        "MoneyMarket": 6400278,
+        "PriceOracle": 6399813
+    }
+}

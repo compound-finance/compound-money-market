@@ -1,0 +1,28 @@
+{
+  "name": "compound-money-market",
+  "version": "0.0.1",
+  "description": "The Compound Money Market",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "./scripts/coverage",
+    "lint": "./scripts/lint",
+    "test": "./scripts/test"
+  },
+  "repository": "git@github.com:compound-finance/compound-money-market.git",
+  "author": "Geoffrey Hayes <geoff@compound.finance>, Art Peel <art@compound.finance>, Torrey Atcitty <torrey@compound.finance>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "bignumber.js": "^7.2.1",
+    "seamless-immutable": "^7.1.3",
+    "solc": "^0.4.24",
+    "solidity-coverage": "https://github.com/compound-finance/solidity-coverage.git#25fc59d2be6739d6cfe5475e33be67f7b6d57c51",
+    "solium": "^1.1.7",
+    "truffle": "^4.1.11",
+    "web3": "^1.0.0-beta.34"
+  },
+  "dependencies": {
+    "ethereumjs-wallet": "^0.6.0",
+    "truffle-core": "^4.1.11",
+    "truffle-wallet-provider": "^0.0.5"
+  }
+}

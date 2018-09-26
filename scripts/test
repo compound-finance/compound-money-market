@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/.."
+
+"$PROJ_ROOT/node_modules/truffle/build/cli.bundled.js" test --network test $@

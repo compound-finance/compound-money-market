@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -eo pipefail
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/../.."
+
+network="$1"
+
+if [ -z "$network" ]; then
+	echo "usage: scripts/blockchain/deploy-mock-oracle {network}"
+	echo ""
+	echo "deploys mock oracle to test net"
+	exit 1
+fi
+
+# Make sure to remove mock oracle from contracts/ after this script exits
+function cleanup {
+	rm -r "$PROJ_ROOT/contracts/Oracle"
+}
+trap cleanup EXIT
+
+# Copy over mock oracle and its dependencies
+cp -r "$PROJ_ROOT/test/Oracle" "$PROJ_ROOT/contracts"
+
+truffle compile --network="$network"
+NETWORK="$network" truffle exec --network="$network" "$DIR/../javascript/deployMockOracle.js"

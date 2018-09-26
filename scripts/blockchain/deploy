@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+set -eo pipefail
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/../.."
+
+network="$1"
+
+if [ -z "$network" ]; then
+	echo "usage: scripts/blockchain/deploy {network}"
+	echo ""
+	echo "deploys fresh money market contract to network (note: uses --reset)"
+	exit 1
+fi
+
+truffle deploy --network="$network" --reset

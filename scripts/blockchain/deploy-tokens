@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -eo pipefail
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/../.."
+
+network="$1"
+
+if [ -z "$network" ]; then
+	echo "usage: scripts/blockchain/deploy-tokens {network}"
+	echo ""
+	echo "deploys set of faucet tokens to test net"
+	exit 1
+fi
+
+# Make sure to remove FaucetToken from contracts/ after this script exits
+function cleanup {
+	rm -r "$PROJ_ROOT/contracts/Tokens"
+}
+trap cleanup EXIT
+
+# Copy over FaucetToken and its dependencies
+cp -r "$PROJ_ROOT/test/Tokens" "$PROJ_ROOT/contracts"
+
+truffle compile --network="$network"
+NETWORK="$network" truffle exec --network="$network" "$DIR/../javascript/deployTokens.js"

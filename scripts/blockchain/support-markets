@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -eo pipefail
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/../.."
+
+network="$1"
+
+if [ -z "$network" ]; then
+	echo "usage: scripts/blockchain/support-markets {network}"
+	echo ""
+	echo "calls money market's _supportMarket for each known token"
+	exit 1
+fi
+
+NETWORK="$network" truffle exec --network="$network" "$DIR/../javascript/supportMarkets.js"

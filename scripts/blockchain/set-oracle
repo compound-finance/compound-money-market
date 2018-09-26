@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -eo pipefail
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/../.."
+
+network="$1"
+
+# price oracle address may be passed in from command-line, or come from networks configuration
+oracle_address="$2"
+
+if [ -z "$network" ]; then
+	echo "usage: scripts/blockchain/set-oracle {network} <{oracle_address}>"
+	echo ""
+	echo "calls money market's _setOracle"
+	exit 1
+fi
+
+NETWORK="$network" ORACLE_ADDRESS="$oracle_address" truffle exec --network="$network" "$DIR/../javascript/setOracle.js"

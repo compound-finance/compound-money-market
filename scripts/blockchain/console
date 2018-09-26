@@ -1,0 +1,34 @@
+#!/bin/sh
+
+set -eo pipefail
+
+DIR=`dirname $0`
+PROJ_ROOT="$DIR/../.."
+
+network="$1"
+
+if [ -z "$network" ]; then
+	echo "usage: scripts/blockchain/console {network}"
+	echo ""
+	echo "runs a truffle console for given network"
+	echo "note, you'll need to set-up a private key as in README.md"
+	exit 1
+fi
+
+# Make sure to remove FaucetToken from contracts/ after this script exits
+function cleanup {
+	echo "cleaning build_..."
+	[ -d "$PROJ_ROOT/build_" ] && rm -r "$PROJ_ROOT/build_"
+}
+trap cleanup EXIT
+
+# Clear existing build_ folder if exists
+[ -d "$PROJ_ROOT/build_" ] && rm -r "$PROJ_ROOT/build_"
+
+# Make new one
+mkdir -p "$PROJ_ROOT/build_/contracts"
+
+# Make simple build folder
+NETWORK="$network" truffle exec "$DIR/../javascript/buildBuildFolder.js" --network="$network"
+
+CONTRACTS_BUILD_DIRECTORY="$PROJ_ROOT/build_/contracts" NETWORK="$network" truffle console --network="$network"
