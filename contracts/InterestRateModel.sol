@@ -7,7 +7,7 @@ pragma solidity ^0.4.24;
   * @dev These functions are specifically not marked `pure` as implementations of this
   *      contract may read from storage variables.
   */
-contract InterestRateModel {
+interface InterestRateModel {
 
     /**
       * @notice Gets the current supply interest rate based on the given asset, total cash and total borrows
