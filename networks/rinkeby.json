@@ -6,6 +6,13 @@
         "StandardInterestRateModel": "0x2f903e3e62de1875001db164c0f50d8b794e1bdb"
     },
     "Tokens": {
+        "DAI": {
+            "name": "DAI",
+            "symbol": "DAI",
+            "decimals": 18,
+            "address": "0x4e17c87c52d0E9a0cAd3Fbc53b77d9514F003807",
+            "supported": true
+        },
         "ZRX": {
             "name": "0x Protocol",
             "symbol": "ZRX",
