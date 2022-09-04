@@ -282,7 +282,7 @@ truffle(development)> moneyMarket.collateralRatio().then((r) => r.toString())
 Discussion
 ----------
 
-For any concerns with the protocol, open an issue or visit us on [Discord](https://discordapp.com/invite/874ntdw) to discuss.
+For any concerns with the protocol, open an issue or visit us on [Discord](https://compound.finance/discord) to discuss.
 
 For security concerns, please email [security@compound.finance](mailto:security@compound.finance).
 
